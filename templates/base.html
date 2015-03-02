@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sketch Stipple & Shade</title>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/preets.css') }}">
+
+    <script>
+        $(document).ready(function() {
+            $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+        });
+    </script>
+
+</head>
+<body>
+<div class="row title-image">
+    <div class="col-md-12">
+        <img class="title-image" src="http://placekitten.com/g/960/300" alt="960x300">
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row nav-bar">
+        <div class="col-md-7">
+            <nav class="navbar navbar-default">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        {% for item in navbar %}
+                            <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col-md-5 social-icons" align="center">
+            {% for item in social %}
+                <div class="col-md-2 social-icon">
+                    <img class="social-icon" src="{{ url_for('static', filename=item.icon) }}" alt={{ item.alt }}>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div id="container-fluid">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
