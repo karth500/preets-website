@@ -17,12 +17,14 @@ social_icons = [{'icon': 'social/flurl-48x48.png', 'alt': 'fb'},
 app = Flask(__name__)
 
 
-@app.route('/', defaults={'page': 'index.html'})
+@app.route('/', defaults={'page': 'index'})
 @app.route('/<page>')
 def hello_world(page):
-    print 'Log: page - ' + page
-    if page != 'index.html':
+    page += '.html'
+    if page != 'index.html' and page != 'about.html':
         page = 'base.html'
+
+    print 'Log: page - ' + page
     return render_template(page, navbar=navbar, social=social_icons)
 
 

@@ -31,3 +31,12 @@ img.most-recent-item {
     left: 0px;
     z-index: 0;
 }
+
+img.about-pic {
+    background-color: #feedbb;
+    padding: 5px;
+}
+
+/*.nav-bar {*/
+    /*background-color: #feedbb;*/
+/*}*/
